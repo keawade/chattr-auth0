@@ -60,7 +60,7 @@ block content
                             return false
                         }
                         socket.emit('chat message', {
-                            user: userProfile.nickname,
+                            user: userProfile.given_name,
                             text: $('#m').val(),
                             avatar: userProfile.picture
                         });
