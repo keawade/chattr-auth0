@@ -26,9 +26,9 @@ io
         timeout: 15000 // 15 seconds to send the authentication message
     })).on('authenticated', function (socket) {
         console.log('[auth] socket authenticated', JSON.stringify(socket.decoded_token))
-            socket.on('chat message', function (msg) {
-                io.emit('chat message', msg);
-            });
+        socket.on('chat message', function (msg) {
+            io.emit('chat message', msg);
+        });
     })
 
 app.get('/', function (req, res) {
