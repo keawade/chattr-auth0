@@ -74,5 +74,6 @@ block content
                 })
                 .on('chat message', function (msg) {
                     $('#messages').append($('<li>').text(msg.user + ': ' + msg.text));
+                    $("html, body").animate({ scrollTop: $(document).height() }, 1000);
                 });
         };
