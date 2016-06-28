@@ -2,40 +2,7 @@ doctype html
 html
     head
         title Socket.IO chat
-        script(src='//cdn.auth0.com/js/lock-9.1.min.js')
         meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
-        script(src='/socket.io/socket.io.js')
-        script(src='http://code.jquery.com/jquery-1.11.1.js')
         link(rel='stylesheet' type='text/css' href='style.css')
     body
         block content
-        script.
-            var lock = null
-            $(document).ready(function () {
-                lock = new Auth0Lock('U67ilud0kDn6dKSkhP0cdVwyWjnR5CrO', 'keawade.auth0.com')
-            })
-            var userProfile
-            var userToken
-
-            var hash = lock.parseHash()
-            if(hash) {
-                if(hash.error) {
-                    console.log('There was an error logging in', hash.error)
-                }
-                else {
-                    lock.getProfile(hash.id_token, function(err, profile) {
-                        if(err) { 
-                            console.log('Cannot get user', err)
-                            return
-                        }
-                        userProfile = profile
-                        localStorage.setItem('userToken', hash.id_token)
-                        userToken = hash.id_token
-                    })
-                }
-            }
-
-            $('#login button').click(function(e){
-                e.preventDefault()
-                lock.show()
-            })
