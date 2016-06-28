@@ -49,7 +49,6 @@ block content
             var socket = io();
             socket
                 .on('connect', function (msg) {
-                    console.log('connected');
                     socket.emit('authenticate', {token: userToken}); // send the jwt
                 })
                 .on('authenticated', function () {
@@ -74,7 +73,6 @@ block content
                     throw new Error(msg.data.type);
                 })
                 .on('chat message', function (msg) {
-                    console.log(msg);
                     $('#messages').append($('<li>').text(msg.user + ': ' + msg.text));
                 });
         };
